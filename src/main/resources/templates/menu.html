@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Spa Menu</title>
+        <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+        <th:block th:replace="~{fragments :: fonts}"></th:block>
+    </head>
+
+    <body>
+
+    <h1>My Super Fancy Spa</h1>
+    <div id = "clientProfile">
+        <h2> My Profile </h2>
+        <p> Name: <span th:text="${name}"></span></p>
+        <p> Skin Type: <span th:text="${skintype}"></span></p>
+        <p> Service: <span th:text="${manipedi}"></span></p>
+    </div>
+
+    <div id = "servicesMenu">  <h2> Menu of Available Services </h2>
+    <h3> Facial Treatments </h3>
+    <p> The facial treatments below are recommended by our estheticians for your given skin type:</p>
+        <table>
+            <th:block th:each="service : ${appropriateFacials}" >
+                <tr> <td th:text=" ${service}"></td> </tr>  <!--Loops through each service.-->
+            </th:block>
+        </table>
+    </div>
+
+     <!--Using fragments-->
+    <div th:if="${manipedi.equals('manicure')} or ${manipedi.equals('both')}">
+        <h3> Manicure </h3>
+        <p th:replace="~{fragments :: manicureDescription}"></p>
+    </div>
+    <div th:if="${manipedi.equals('pedicure')} or ${manipedi.equals('both')}">  <!-- Double equals == doesn't work!-->
+        <h3> Pedicure </h3>
+        <p th:replace="~{fragments :: pedicureDescription}"></p>
+    </div>
+
+    <!-- BONUS ALTERNATIVE
+    <div th:if="${manipedi.equals('both')}">   >>>>>>>>>>>>>>>> Double equals == doesn't work!
+        <h3> Manicure & Pedicure </h3>
+        <p th:replace="~{fragments :: manicureDescription}"></p>
+        <p th:replace="~{fragments :: pedicureDescription}"></p>
+    </div> ! -->
+
+    <!--BONUS #1-->
+    <footer>
+    <div> Ask about our hottest new colors for your manipedi!</div>
+
+        <!--BONUS #1 Looping-->
+        <div id="polish-colors">
+        <th:block th:each="option : ${polishColorChoices}">
+            <div class="polish-sample" th:style="'background: ' + ${option}"> </div>
+            <!--<div class="polish-sample"  th:style="|background: ${polish}|"> </div>-->
+
+        </th:block>
+        </div>
+
+        <!--BONUS #1 Interactive-->
+        <div id="nail-polish-container">
+            <div class="nail-polish" style="background-color: #FF5733;"></div>
+            <div class="nail-polish" style="background-color: #33FF57;"></div>
+            <div class="nail-polish" style="background-color: #3357FF;"></div>
+            <div class="nail-polish" style="background-color: #F1C40F;"></div>
+            <div class="nail-polish" style="background-color: #9B59B6;"></div>
+        </div>
+
+    </footer>
+
+    </body>
+</html>
