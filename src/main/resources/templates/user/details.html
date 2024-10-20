@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Details</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <th:block th:replace="~{fragments :: fonts}"></th:block>
+</head>
+
+<body>
+<div>
+    <p> User: <span th:text="${user.username}" > </span></p>
+    <p> Email: <span th:text="${user.email}" > </span></p>
+    <p> Date Registered: <span th:text="${user.dateRegistered}" > </span></p>
+</div>
+</body>
+
+</html>

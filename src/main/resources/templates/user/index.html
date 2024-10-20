@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The LaunchCode Spa & Relaxation Center to my spa!</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <th:block th:replace="~{fragments :: fonts}"></th:block>
+</head>
+
+<body>
+<div>
+    <h3 th:text="'Welcome, ' + ${user.username}"> </h3>
+    <a th:href="@{/}"> Go to the homepage to select your services </a>
+
+    <hr />
+    <h3>MEMBERS - List</h3>
+    <th:block th:each="member : ${users}">
+        <span th:text="'#' + ${member.id}"> </span>
+        <span th:text="${member.username}"> </span>
+        <span th:text="${member.dateRegistered}"> </span>
+        <a th:href="@{'/user/details/' + ${member.id}}"><span> Details </span></a> <br>
+    </th:block>
+
+    <hr />
+    <h3>MEMBERS - Table</h3>
+    <th:block th:each="member : ${users}">
+        <tr>
+            <td th:text="'#' + ${member.id}"></td>
+            <td th:text="${member.username}"></td>
+            <td th:text="${member.dateRegistered}"></td>
+            <td> <a th:href="@{'/user/details/' + ${member.id}}">Details</a> </td>
+        </tr>
+    </th:block>
+
+</div>
+</body>
+
+</html>

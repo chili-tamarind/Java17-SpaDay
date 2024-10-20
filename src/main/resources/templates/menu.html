@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Spa Menu</title>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <th:block th:replace="~{fragments :: fonts}"></th:block>
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
@@ -28,10 +29,13 @@
     <div th:if = "${client.nailService == 'manicure'}">
         <h3>Manicure</h3>
         <p th:replace =  "fragments :: manicureDescription"></p>
+<!--        <p th:replace =  ~{fragments :: manicureDescription}></p>-->
+
     </div>
     <div th:if = "${client.nailService == 'pedicure'}">
         <h3>Pedicure</h3>
-        <p th:replace = "fragments :: pedicureDescription"></p>
+   <p th:replace = "fragments :: pedicureDescription"></p>
+<!--        <p th:replace =  ~{fragments :: pedicureDescription}></p>-->
     </div>
 </div>
 </body>

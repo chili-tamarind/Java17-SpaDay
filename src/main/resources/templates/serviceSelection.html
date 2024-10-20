@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Select Your Spa Services</title>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <th:block th:replace="~{fragments :: fonts}"></th:block>
 </head>
 <body>
+<div>
 <form method = 'post'>
 
     <label>
@@ -26,5 +28,6 @@
     </label>
     <input type = 'submit' value = 'Submit'>
 </form>
+</div>
 </body>
 </html>
